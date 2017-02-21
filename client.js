@@ -29,12 +29,13 @@ WeChatMP.requestCredential = function (options, credentialRequestCompleteCallbac
     var state = OAuth._stateParam(loginStyle, credentialToken, options.redirectUrl);
 
     var loginUrl =
-        'https://open.weixin.qq.com/connect/oauth2/authorize' +
+        oauthServer+
         '?appid=' + config.appId +
         '&redirect_uri=' + OAuth._redirectUri(serviceName, config, null, {replaceLocalhost: true}) +
         '&response_type=code' +
         '&scope=' + scope +
         '&state=' + state +
+        '&callback_uri=' + callback_uri +
         '#wechat_redirect';
 
     OAuth.launchLogin({
